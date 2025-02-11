@@ -1,0 +1,164 @@
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Valentines 2025</title>
+
+    <title>Valentines gift wheel</title>
+    <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="valentines.css" />
+  </head>
+
+  <body>
+    <h1>⋆˚✿˖° Happy Valentines day! ₊˚⊹♡</h1> <br>
+    <p>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣎⠱⣲⠀⠀⠀⠀⠀⠀⠀
+      ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡠⠤⠒⠒⠒⠒⠤⢄⣈⠈⠁⠀⠀⠀⠀⠀⠀⠀
+      ⠀⠀⠀⠀⠀⠀⠀⢀⡤⠒⠝⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠲⢄⡀⠀⠀⠀⠀⠀
+      ⠀⠀⠀⠀⠀⢀⡴⠋⠀⠀⠀⠀⣀⠀⠀⠀⠀⠀⠀⢠⣢⠐⡄⠀⠉⠑⠒⠒⠒⣄
+      ⠀⠀⠀⣀⠴⠋⠀⠀⠀⡎⢀⣘⠿⠀⠀⢠⣀⢄⡦⠀⣛⣐⢸⠀⠀⠀⠀⠀⠀⢘
+      ⡠⠒⠉⠀⠀⠀⠀⠀⡰⢅⠣⠤⠘⠀⠀⠀⠀⠀⠀⢀⣀⣤⡋⠙⠢⢄⣀⣀⡠⠊
+      ⢇⠀⠀⠀⠀⠀⢀⠜⠁⠀⠉⡕⠒⠒⠒⠒⠒⠛⠉⠹⡄⣀⠘⡄⠀⠀⠀⠀⠀⠀
+      ⠀⠑⠂⠤⠔⠒⠁⠀⠀⡎⠱⡃⠀⠀⡄⠀⠄⠀⠀⠠⠟⠉⡷⠁⠀⠀⠀⠀⠀⠀
+      ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠹⠤⠤⠴⣄⡸⠤⣄⠴⠤⠴⠄⠼⠀⠀⠀⠀⠀⠀⠀⠀<p><br><br>
+    <h2>To: Nicholas</h2>
+    <h2>From: Isabel</h2><br>
+<p>Dear, Nicholas</p><br>
+<p>Happy Valentines day <4
+  <br>Today is the day to celebrate our love! Thank you for loving me unconditionally. You make it seem like it’s so easy to love me on days when I don’t even love myself. You bring so much light into my life and I look forward to a future with you. May we continue to grow in love together. 
+  <br><br>I love you, always ⸜(｡˃ ᵕ ˂ )⸝♡
+  <br><br>Love, Isabel<p>
+<br>────୨ৎ────<br><br>
+    <h2>⋆.˚ Valentines gift wheel ｡𖦹°‧</h2> <br>
+    <div class="wrapper">
+      <div class="container">
+        <h3>Click on the dog to spin for a gift</h3><br>
+        <p>*only 1 spin per day</p><br><br>
+        <canvas id="wheel"></canvas>
+        <button id="spin-btn">
+          <img src="dog.png" alt="Spin Button" />
+        </button>
+        <img src="isa.png" alt="arrow" />
+      </div>
+      <div id="final-value">
+      </div>
+    </div>
+    <footer>
+      <br><br><p>© Made for Nicholas Low by Isabel Lim for Valentines day 2025 🩷</p>
+      </footer>
+    <!-- Chart JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <!-- Chart JS Plugin for displaying text over chart -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.1.0/chartjs-plugin-datalabels.min.js"></script>
+    <!-- Script -->
+    <script src="script.js"></script>
+    <script>
+    const wheel = document.getElementById("wheel");
+const spinBtn = document.getElementById("spin-btn");
+const finalValue = document.getElementById("final-value");
+//Object that stores values of minimum and maximum angle for a value
+const rotationValues = [
+  { minDegree: 0, maxDegree: 30, value: "a hug" },
+  { minDegree: 31, maxDegree: 90, value: "a kiss" },
+  { minDegree: 91, maxDegree: 150, value: "$10" },
+  { minDegree: 151, maxDegree: 210, value: "a sleepover" },
+  { minDegree: 211, maxDegree: 270, value: "a free meal" },
+  { minDegree: 271, maxDegree: 330, value: "a burj" },
+  { minDegree: 331, maxDegree: 360, value: "a hug" },
+];
+//Size of each piece
+const data = [16, 16, 16, 16, 16, 16];
+//background color for each piece
+var pieColors = [
+  "#f25278",
+  "#fc94af",
+  "#f25278",
+  "#fc94af",
+  "#f25278",
+  "#fc94af",
+];
+//Create chart
+let myChart = new Chart(wheel, {
+  //Plugin for displaying text on pie chart
+  plugins: [ChartDataLabels],
+  //Chart Type Pie
+  type: "pie",
+  data: {
+    //Labels(values which are to be displayed on chart)
+    labels: ["a kiss", "a hug", "a burj", "a free meal", "a sleepover", "$10"],
+    //Settings for dataset/pie
+    datasets: [
+      {
+        backgroundColor: pieColors,
+        data: data,
+      },
+    ],
+  },
+  options: {
+    //Responsive chart
+    responsive: true,
+    animation: { duration: 0 },
+    plugins: {
+      //hide tooltip and legend
+      tooltip: false,
+      legend: {
+        display: false,
+      },
+      //display labels inside pie chart
+      datalabels: {
+        color: "#ffffff",
+        formatter: (_, context) => context.chart.data.labels[context.dataIndex],
+        font: { size: 24 },
+      },
+    },
+  },
+});
+//display value based on the randomAngle
+const valueGenerator = (angleValue) => {
+  for (let i of rotationValues) {
+    //if the angleValue is between min and max then display it
+    if (angleValue >= i.minDegree && angleValue <= i.maxDegree) {
+      finalValue.innerHTML = `<p>You get ${i.value}! ૮ ˶ᵔ ᵕ ᵔ˶ ა</p>`;
+      spinBtn.disabled = false;
+      break;
+    }
+  }
+};
+
+//Spinner count
+let count = 0;
+//100 rotations for animation and last rotation for result
+let resultValue = 101;
+//Start spinning
+spinBtn.addEventListener("click", () => {
+  spinBtn.disabled = true;
+  //Empty final value
+  finalValue.innerHTML = `<p>hehe good luck (˶˃ ᵕ ˂˶)</p>`;
+  //Generate random degrees to stop at
+  let randomDegree = Math.floor(Math.random() * (355 - 0 + 1) + 0);
+  //Interval for rotation animation
+  let rotationInterval = window.setInterval(() => {
+    //Set rotation for piechart
+    /*
+    Initially to make the piechart rotate faster we set resultValue to 101 so it rotates 101 degrees at a time and this reduces by 1 with every count. Eventually on last rotation we rotate by 1 degree at a time.
+    */
+    myChart.options.rotation = myChart.options.rotation + resultValue;
+    //Update chart with new value;
+    myChart.update();
+    //If rotation>360 reset it back to 0
+    if (myChart.options.rotation >= 360) {
+      count += 1;
+      resultValue -= 5;
+      myChart.options.rotation = 0;
+    } else if (count > 15 && myChart.options.rotation == randomDegree) {
+      valueGenerator(randomDegree);
+      clearInterval(rotationInterval);
+      count = 0;
+      resultValue = 101;
+    }
+  }, 10);
+});
+</script>
+  </body>
+</html>
+
